@@ -1,9 +1,9 @@
 <?php 
 session_start();
 include "includes/dbconfig.php";
-//print_r($_SESSION['f_userid']);
-if($_SESSION['f_userid']){
-    header("Location: myaccount.php");exit;
+
+if(!$_SESSION['f_userid']){
+    header("Location: index.php");exit;
 }
 ?>
 <!DOCTYPE html>
@@ -44,39 +44,22 @@ input.ng-valid {
 ?>
 
 <div class="container" ng-app="myApp" ng-controller="formCtrl">
-  <h2>Login form</h2>
-  <form name="myForm" novalidate ng-submit="myFunc()">
-    <div class="form-group">
-      <label for="email">Username:</label>
-      <input type="text" class="form-control" name="username" ng-model="username" required>
-      <span style="color:red" ng-show="myForm.username.$dirty && myForm.username.$invalid">
-      <span ng-show="myForm.username.$error.required">Username is required.</span>
-      </span>
+  <h2>My Account</h2>
+  
+  <div class="row">
+    <div class="col-sm-4">
+      <ul class="list-group">
+        <li class="list-group-item"><a href="view_users.php">Users</a></li>
+        <li class="list-group-item"><a href="logout.php">My Profile</a></li>
+        <li class="list-group-item"><a href="logout.php">Change Password</a></li>
+        <li class="list-group-item"><a href="logout.php">Logout</a></li>
+      </ul>
     </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" name="password" ng-model="password" required>
-      <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
-      <span ng-show="myForm.password.$error.required">Password is required.</span>
-      </span>
+    <div class="col-sm-8">
+      <h2>Welcome to your dashboard</h2>
     </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="remember"> Remember me</label>
-    </div>
-    
-      
-      <input type="submit"
-      ng-disabled="myForm.username.$dirty && myForm.username.$invalid ||  
-      myForm.password.$dirty && myForm.password.$invalid" ng-click="formsubmit(myForm.$valid)">
-    <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+  </div>
 
-  </form>
-  <p>
-    <pre ng-model="result">
-                {{result}}
-            </pre>
-
-  </p>
 </div>
 <?php
   include "includes/footer.php";

@@ -91,19 +91,8 @@ input.ng-valid {
 
 <script>
 var app = angular.module('myApp', []);
-/* app.controller('formCtrl', function($scope) {
-    //$scope.name = "John";
-    //$scope.user = 'John Doe';
-    //$scope.email = 'John.Doe@gmail.com';
-    $scope.myTxt = "You have not yet clicked submit";
-    $scope.myFunc = function () {
-        $scope.myTxt = "You clicked submit!";
-    }
-}); */
 
-app.controller("formCtrl", ['$scope', '$http', function($scope, $http) {
-   var vm = this; // self-referencing local variable required for when promise resolves
-    vm.model = {};
+app.controller("formCtrl", ['$scope', '$http', '$window', function($scope, $http, $window) {
         $scope.url = 'submit.php';
  
         $scope.formsubmit = function(isValid) {
@@ -115,12 +104,15 @@ app.controller("formCtrl", ['$scope', '$http', function($scope, $http) {
                 $http.post($scope.url, {"name": $scope.name, "email": $scope.email, "username": $scope.username, "password": $scope.password}).
                         then(function(data, status) {
                             console.log(data);
-                            $scope.status = status;
-                            $scope.data = data;
-                            $scope.result = data; // Show result from server in our <pre></pre> element
+                            //$scope.status = status;
+                            //$scope.data = data;
+                            //$scope.result = data; // Show result from server in our <pre></pre> element
 
-                            vm.model = {}; // this resets the model
-                            vm.myForm.$setPristine(); // this resets the form itself
+                            //$location.path('/login');
+                            if(data == 1)
+                            $window.location.href = 'login.php?succ=Data inserted successfully!!';
+                            else
+                            $window.location.href = 'login.php?err=Data insertion failed!!';
 
                         })
             }else{

@@ -17,8 +17,7 @@ $status = 'A';
             $inserted_id = $sql_insert->insert_id;
             $sql_insert->free_result();
             $sql_insert->close();
-            $this->close($db);
-            
+
         	$return_msg=1;
         }
     } catch(Exception $e){
