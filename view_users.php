@@ -37,6 +37,15 @@ input.ng-valid {
 }
 
 </style>
+
+<style>
+
+table, td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+</style>
 </head>
 <body>
 <?php
@@ -57,11 +66,28 @@ input.ng-valid {
     </div>
     <div class="col-sm-8">
       <h2>Users List</h2>
-      <ul>
+      <!-- <ul>
         <li ng-repeat="x in myData">
           {{ x.name + ', ' + x.email }}
         </li>
-      </ul>
+      </ul> -->
+
+      <table>
+        <tr ng-repeat="x in myData">
+          <td ng-if="$odd" style="background-color:#f1f1f1">
+          {{ $index + 1 }}</td>
+          <td ng-if="$even">
+          {{ $index + 1 }}</td>
+          <td ng-if="$odd" style="background-color:#f1f1f1">
+          {{ x.name }}</td>
+          <td ng-if="$even">
+          {{ x.name }}</td>
+          <td ng-if="$odd" style="background-color:#f1f1f1">
+          {{ x.email }}</td>
+          <td ng-if="$even">
+          {{ x.email }}</td>
+        </tr>
+      </table>
     </div>
   </div>
 
@@ -76,7 +102,7 @@ var app = angular.module('myApp', []);
 app.controller('formCtrl', function($scope, $http) {
     $http.get("customers.php").then(function(response) {
       console.log(response);
-        $scope.myData = response.data.records;
+        $scope.myData = response.data.records;//response.data.records;
     });
 });
 </script>
