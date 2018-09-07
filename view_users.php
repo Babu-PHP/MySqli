@@ -86,6 +86,10 @@ table, td  {
           {{ x.email }}</td>
           <td ng-if="$even">
           {{ x.email }}</td>
+          <td ng-if="$odd" style="background-color:#f1f1f1">
+          {{ x.email }}</td>
+          <td ng-if="$even">
+          {{ x.email }}</td>
         </tr>
       </table>
     </div>
