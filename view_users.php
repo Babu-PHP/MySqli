@@ -70,8 +70,29 @@ table, td  {
         <li ng-repeat="x in myData">
           {{ x.name + ', ' + x.email }}
         </li>
-      </ul> -->
+      </ul>
 
+      <table>
+        <tr ng-repeat="x in myData">
+          <td ng-if="$odd" style="background-color:#f1f1f1">
+          {{ $index + 1 }}</td>
+          <td ng-if="$even">
+          {{ $index + 1 }}</td>
+          <td ng-if="$odd" style="background-color:#f1f1f1">
+          {{ x.name }}</td>
+          <td ng-if="$even">
+          {{ x.name }}</td>
+          <td ng-if="$odd" style="background-color:#f1f1f1">
+          {{ x.email }}</td>
+          <td ng-if="$even">
+          {{ x.email }}</td>
+          <td ng-if="$odd" style="background-color:#f1f1f1">
+          {{ x.email }}</td>
+          <td ng-if="$even">
+          {{ x.email }}</td>
+        </tr>
+      </table> -->
+      
       <table>
         <tr ng-repeat="x in myData">
           <td ng-if="$odd" style="background-color:#f1f1f1">
