@@ -10,7 +10,7 @@
   <div ng-controller="userCtrl">
       
       <input type='file' multiple ng-file="uploadfiles" >
-      <button ng-click="upload()">Upload</button>
+ <input type='button' value='Upload' id='upload' ng-click='upload()' >
       
       <p>{{ response.name }}</p>
   </div>
@@ -45,6 +45,7 @@
           headers: {'Content-Type': undefined},
         }).then(function successCallback(response) { 
           // Store response data
+          console.log(response.data);
           $scope.response = response.data;
         });
     }
