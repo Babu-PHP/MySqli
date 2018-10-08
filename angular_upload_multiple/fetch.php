@@ -1,5 +1,5 @@
 <?php
-	$conn = new mysqli('localhost', 'root', '', 'angular');
+	$conn = new mysqli('localhost', 'root', 'root', 'angularjs');
 	$output = array();
 	$sql = "SELECT * FROM upload";
 	$query=$conn->query($sql);

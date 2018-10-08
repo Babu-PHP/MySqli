@@ -30,7 +30,7 @@
 		</div>
 		<div class="col-md-9">
 			<div class="col-md-4" ng-repeat="image in images">
-				<img ng-src="<?php echo __DIR__; ?>/upload/{{ image.filename }}" width="100%" height="250px" class="thumbnail">
+				<img ng-src="upload/{{ image.filename }}" width="100%" height="250px" class="thumbnail">
 			</div>
 		</div>
 	</div>
